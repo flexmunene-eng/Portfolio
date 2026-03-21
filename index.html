@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex Munene — Conversion Copywriter</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #f5f1eb;
+    --warm: #c8b89a;
+    --accent: #b5451b;
+    --muted: #7a7167;
+    --card: #edeae3;
+    --border: #d4cfc6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 80px 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-body {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 0 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-top: 32px;
+    padding-bottom: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .nav-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* ── CASE STUDY ── */
+  .case-study {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .case-study.visible { display: block; }
+
+  .cs-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cs-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+  }
+
+  .cs-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .cs-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .cs-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 32px 0 48px;
+  }
+
+  .cs-meta-cell {
+    background: var(--card);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cs-meta-cell .label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  .cs-meta-cell .value {
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 12px;
+    margin-top: 48px;
+  }
+
+  .section-label:first-of-type { margin-top: 0; }
+
+  /* ── BRIEF BOX ── */
+  .brief-box {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 48px;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+
+  .brief-box p + p { margin-top: 12px; }
+
+  /* ── COPY BLOCKS ── */
+  .copy-section {
+    margin-bottom: 56px;
+  }
+
+  .copy-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: 40px;
+    margin-bottom: 24px;
+  }
+
+  .copy-type-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .lp-copy {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .lp-hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 44px;
+  }
+
+  .lp-hero .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .lp-hero .subheadline {
+    font-size: 1rem;
+    color: var(--warm);
+    line-height: 1.65;
+  }
+
+  .lp-body {
+    padding: 40px 44px;
+  }
+
+  .lp-body h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    margin: 32px 0 12px;
+    color: var(--ink);
+  }
+
+  .lp-body h3:first-child { margin-top: 0; }
+
+  .lp-body p {
+    font-size: 0.95rem;
+    color: #3a3530;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .lp-body ul {
+    list-style: none;
+    margin: 12px 0 20px;
+  }
+
+  .lp-body ul li {
+    font-size: 0.92rem;
+    color: #3a3530;
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .lp-body ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  .lp-body ul li:last-child { border-bottom: none; }
+
+  .quote-block {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .quote-block cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: var(--warm);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .cta-strip {
+    background: var(--accent);
+    padding: 28px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .cta-strip .cta-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: white;
+  }
+
+  .cta-strip .cta-sub {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+
+  .cta-btn {
+    background: white;
+    color: var(--accent);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ── EMAIL SEQUENCE ── */
+  .email-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .email-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .email-header {
+    background: var(--card);
+    padding: 18px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .email-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 28px;
+  }
+
+  .email-meta { flex: 1; }
+
+  .email-timing {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .email-subject {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .email-body {
+    padding: 24px;
+    font-size: 0.9rem;
+    color: #3a3530;
+    line-height: 1.85;
+  }
+
+  .email-body p + p { margin-top: 14px; }
+
+  .email-body ol {
+    margin: 12px 0;
+    padding-left: 20px;
+  }
+
+  .email-body ol li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  .email-cta {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .email-sig {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── STRATEGY NOTE ── */
+  .strategy-note {
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 14px;
+  }
+
+  .strategy-note .sn-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 12px;
+  }
+
+  .strategy-note h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .strategy-note p {
+    font-size: 0.88rem;
+    color: rgba(245,241,235,0.75);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .strategy-note p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 20px;
+  }
+
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    header, main, nav, footer { padding-left: 20px; padding-right: 20px; }
+    .lp-hero, .lp-body, .cta-strip { padding-left: 24px; padding-right: 24px; }
+    .email-body { padding: 18px; }
+    .cs-meta-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Portfolio — Spec Work</p>
+  <h1>Conversion copy that <em>earns</em> its place on the page.</h1>
+  <p class="header-body">I write email sequences, landing pages, and retention campaigns for e-commerce brands and SaaS products. Every sample here was built from a real brief — audience research first, copy second.</p>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">Speciality</span>
+      <span class="meta-value">Email & Retention Copy</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Niches</span>
+      <span class="meta-value">Beauty · Fashion · SaaS</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Available</span>
+      <span class="meta-value">For freelance projects</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <button class="nav-btn active" onclick="show('forme', this)">Forme Studio</button>
+  <button class="nav-btn" onclick="show('lume', this)">Lumé Skin</button>
+  <button class="nav-btn" onclick="show('drape', this)">Drape</button>
+  <button class="nav-btn" onclick="show('flowdesk', this)">Flowdesk</button>
+</nav>
+
+<main>
+
+<!-- ════════════════════════════════════════
+     CASE STUDY 1: FORME STUDIO
+════════════════════════════════════════ -->
+<section class="case-study visible" id="forme">
+  <div class="cs-header">
+    <span class="cs-tag">Beauty · E-commerce</span>
+    <h2 class="cs-title">Forme Studio</h2>
+    <p class="cs-subtitle">Welcome & post-purchase email sequence for a premium skincare brand</p>
+  </div>
+
+  <div class="cs-meta-grid">
+    <div class="cs-meta-cell"><span class="label">Format</span><span class="value">Email Sequence</span></div>
+    <div class="cs-meta-cell"><span class="label">Emails</span><span class="value">4 (Welcome + Post-purchase)</span></div>
+    <div class="cs-meta-cell"><span class="label">Framework</span><span class="value">BAB + Retention</span></div>
+    <div class="cs-meta-cell"><span class="label">Goal</span><span class="value">Activate & retain first-time buyers</span></div>
+  </div>
+
+  <p class="section-label">The Brief</p>
+  <div class="brief-box">
+    <p>Forme Studio is a premium skincare brand targeting women aged 25–40 who are serious about their routine but skeptical of overclaiming. The brand's tone is calm, considered, and quietly confident — no hype, no before/after shock tactics.</p>
+    <p>The brief: write a welcome sequence that converts new subscribers into first-time buyers, and a post-purchase sequence that turns first-time buyers into repeat customers. The copy needed to feel like a knowledgeable friend, not a brand talking at you.</p>
+  </div>
+
+  <p class="section-label">Email Sequence</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">4-Part Email Sequence</div>
+    <div class="email-sequence">
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">01</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 0 — Welcome</div>
+            <div class="email-subject">Subject: You made it here for a reason.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>You didn't stumble onto Forme by accident.</p>
+          <p>Most people who find us have already been through the cycle — the trending serum that irritated their skin, the "clean" moisturiser that did nothing, the routine they built from YouTube recommendations that still didn't work.</p>
+          <p>We built Forme for exactly that point of frustration.</p>
+          <p>Every product we make starts with one question: what does this skin actually need, not what does it look good claiming to do? That means fewer ingredients, not more. Concentrations that are clinically meaningful. Formulas that don't fight each other.</p>
+          <p>Over the next few days, we'll share the thinking behind how we formulate — and help you figure out what your skin actually needs right now.</p>
+          <p>Nothing to buy yet. Just useful information.</p>
+          <span class="email-cta">→ Start with our skin diagnostic</span>
+          <div class="email-sig">— The Forme Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">02</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 2 — Education</div>
+            <div class="email-subject">Subject: The ingredient your skin is probably missing.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>If you've been dealing with dullness or uneven tone, there's a good chance niacinamide is the gap in your routine.</p>
+          <p>It's one of the most well-researched ingredients in skincare. It strengthens the skin barrier, reduces the appearance of pores, and helps regulate oil production — without irritating sensitive skin. Most people can use it twice a day.</p>
+          <p>The problem is concentration. Most products with niacinamide on the label use 1–2%. Studies show you need at least 5% for meaningful results. Our Clarifying Serum uses 10% — which sounds aggressive, but because we've buffered it with ceramides, almost nobody experiences irritation.</p>
+          <p>This is what we mean by formulation over marketing.</p>
+          <span class="email-cta">→ Read the full formulation breakdown</span>
+          <div class="email-sig">— The Forme Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">03</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 5 — Social Proof + Offer</div>
+            <div class="email-subject">Subject: What three months actually looks like.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>We don't show before/afters. Not because we don't have them — because we think they reduce skincare to a trick, and your skin deserves better than that.</p>
+          <p>What we will share: what customers tell us after 90 days.</p>
+          <div class="quote-block">"I've spent more on skincare than I want to admit. Forme is the first brand where I've finished a product and immediately reordered without even thinking about it." — Amara, 31</div>
+          <div class="quote-block">"My skin barrier was a mess from overusing actives. The Gentle Reset Cleanser was the only thing I used for 6 weeks, and it was exactly what I needed." — Priya, 27</div>
+          <p>If you've been thinking about trying us, now is a good time. Use WELCOME15 for 15% off your first order.</p>
+          <span class="email-cta">→ Shop with WELCOME15</span>
+          <div class="email-sig">— The Forme Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">04</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 14 — Post-Purchase</div>
+            <div class="email-subject">Subject: Your order arrived. Here's what to do next.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Your Forme order should be with you by now.</p>
+          <p>A few things worth knowing before you start:</p>
+          <p>Week 1 is about consistency, not results. Your skin is adjusting. Don't layer everything at once — introduce one new product at a time so you can actually tell what's working.</p>
+          <p>If you're using the Clarifying Serum for the first time: start with evenings only for the first two weeks. Once your skin is used to it, you can use it morning and night.</p>
+          <p>Sunscreen in the morning, every day. Non-negotiable. Any brightening or exfoliating product becomes significantly less effective if you skip SPF.</p>
+          <p>We're here if you have questions — just reply to this email.</p>
+          <div class="email-sig">— The Forme Team</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="strategy-note">
+    <div class="sn-label">Copywriter's Note</div>
+    <h4>Why this sequence works the way it does.</h4>
+    <p>Forme's buyer isn't impulsive. She's done the research. She's been burned before. The biggest barrier isn't price — it's skepticism. So the sequence leads with education and proof of thinking, not product pushes.</p>
+    <p>Email 1 earns trust by demonstrating that the brand understands her frustration. Email 2 gives her something genuinely useful — ingredient knowledge she can apply anywhere, not just at Forme. By the time Email 3 makes an offer, she already trusts the brand's judgment. The post-purchase email reduces buyer's remorse and sets expectations — which is what drives repeat orders.</p>
+    <p>Framework used: BAB (Before/After/Bridge) across the sequence as a whole, with a retention-first structure in Email 4.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CASE STUDY 2: LUMÉ SKIN
+════════════════════════════════════════ -->
+<section class="case-study" id="lume">
+  <div class="cs-header">
+    <span class="cs-tag">Beauty · Skincare</span>
+    <h2 class="cs-title">Lumé Skin</h2>
+    <p class="cs-subtitle">Landing page + email sequence for a dark-spot correcting serum targeting melanin-rich skin</p>
+  </div>
+
+  <div class="cs-meta-grid">
+    <div class="cs-meta-cell"><span class="label">Format</span><span class="value">Landing Page + Email</span></div>
+    <div class="cs-meta-cell"><span class="label">Emails</span><span class="value">3-part treatment sequence</span></div>
+    <div class="cs-meta-cell"><span class="label">Framework</span><span class="value">PAS + Mechanism</span></div>
+    <div class="cs-meta-cell"><span class="label">Goal</span><span class="value">Convert skeptical first-time buyers</span></div>
+  </div>
+
+  <p class="section-label">The Brief</p>
+  <div class="brief-box">
+    <p>Lumé is a skincare brand whose hero product is a dark-spot correcting serum formulated specifically for melanin-rich skin. The audience has been underserved by mainstream skincare — most "brightening" products weren't developed with their skin in mind, and many have experienced uneven results or irritation from generic formulas.</p>
+    <p>The brief: write a landing page that converts skeptical buyers who've tried other products, and a 3-email sequence that supports them through an 8-week treatment cycle, reducing churn and driving reorders.</p>
+  </div>
+
+  <p class="section-label">Landing Page</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">Landing Page Copy</div>
+    <div class="lp-copy">
+      <div class="lp-hero">
+        <div class="headline">Your skin doesn't need more products. It needs the right one.</div>
+        <div class="subheadline">Lumé Serum targets melanin overproduction at the source — not just the surface.</div>
+      </div>
+      <div class="lp-body">
+        <h3>The problem most serums ignore</h3>
+        <p>You've tried the brightening creams. You've been patient. Three months, sometimes six. And the spots fade a little — then come right back.</p>
+        <p>That's not a patience problem. That's a formula problem.</p>
+        <p>Most brightening products sit on the surface of your skin and lighten what's visible. Lumé goes deeper. Our Active Melanin Blocker works inside the dermal layer, where pigmentation actually starts. Less production means less spots — not just lighter spots.</p>
+
+        <h3>What's in it</h3>
+        <ul>
+          <li><strong>Tranexamic Acid 5%</strong> — clinically proven to reduce pigmentation by blocking the enzyme that triggers melanin</li>
+          <li><strong>Niacinamide 4%</strong> — strengthens your skin barrier while evening skin tone</li>
+          <li><strong>Bakuchiol</strong> — retinol-level renewal. None of the irritation.</li>
+        </ul>
+        <p>No hydroquinone. No parabens. No fragrance.</p>
+
+        <h3>Results real users reported</h3>
+        <div class="quote-block">"Week 4, my hyperpigmentation from a year-old breakout is visibly lighter. I've never had a serum actually do that." <cite>— Amara, 29</cite></div>
+        <div class="quote-block">"I'm dark-skinned and most brightening products left me looking ashy or uneven. Lumé didn't." <cite>— Sade, 34</cite></div>
+
+        <p style="margin-top:24px; font-weight:500;">Clinically tested on melanin-rich skin. Not an afterthought. Not a footnote. The starting point.</p>
+      </div>
+      <div class="cta-strip">
+        <div>
+          <div class="cta-text">Start your 8-week treatment — KSh 3,400</div>
+          <div class="cta-sub">Not satisfied after 60 days? Full refund. No forms. No back and forth.</div>
+        </div>
+        <button class="cta-btn">Try Lumé Serum →</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Email Sequence</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">3-Part Treatment Sequence</div>
+    <div class="email-sequence">
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">01</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 0 — Welcome</div>
+            <div class="email-subject">Subject: Your Lumé Serum is on its way. Here's what to expect.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Your order is confirmed. It'll be with you in 2–3 days.</p>
+          <p>Before it arrives — a few things worth knowing.</p>
+          <p>Week 1 and 2 are quiet. That's normal. Tranexamic acid works inside the skin, not on top of it. You won't see dramatic change in the first two weeks, and that doesn't mean it's not working.</p>
+          <p>Week 3 is usually when people notice something. The tone starts to even out. Existing spots look a little softer at the edges.</p>
+          <p>Week 6–8 is where the real difference shows.</p>
+          <p>One rule: sunscreen every morning. Without it, UV exposure will keep triggering the melanin production we're trying to slow down. SPF 30 minimum, SPF 50 if you're outdoors a lot.</p>
+          <p>That's it. Lumé at night, SPF in the morning.</p>
+          <p>We'll check in at week 4.</p>
+          <div class="email-sig">— The Lumé Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">02</div>
+          <div class="email-meta">
+            <div class="email-timing">Week 4 — Check-in</div>
+            <div class="email-subject">Subject: You're halfway. What's changed?</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Four weeks in.</p>
+          <p>Some of you are already seeing it — the spots are lighter, the texture is smoother, the skin looks more even in certain light.</p>
+          <p>Some of you are still waiting. That's fine. Melanin correction isn't linear. Some skin types respond faster, some slower. It doesn't mean the formula isn't working.</p>
+          <p>A few things that help in week 4–8:</p>
+          <ol>
+            <li>Apply to dry skin, not damp. Damp skin dilutes the active concentration.</li>
+            <li>Two drops is enough. More doesn't mean faster.</li>
+            <li>Stay consistent. Skipping days resets some of the progress.</li>
+          </ol>
+          <p>You've got four more weeks. Stick with it.</p>
+          <div class="email-sig">— The Lumé Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">03</div>
+          <div class="email-meta">
+            <div class="email-timing">Week 8 — Reorder</div>
+            <div class="email-subject">Subject: 8 weeks. Here's what the data says.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>In a clinical trial of 64 participants with melanin-rich skin, 87% reported visible reduction in dark spots after 8 weeks of consistent use.</p>
+          <p>You're at week 8.</p>
+          <p>We'd love to hear how it went — reply and tell us what changed.</p>
+          <p>If you want to keep going, your next bottle is ready. Most people find that weeks 8–16 bring more stabilisation — maintaining the results so the spots don't come back.</p>
+          <span class="email-cta">→ Reorder Lumé Serum — 15% off</span>
+          <div class="email-sig">— The Lumé Team</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="strategy-note">
+    <div class="sn-label">Copywriter's Note</div>
+    <h4>Selling to a skeptical buyer with a history of disappointment.</h4>
+    <p>The primary conversion barrier here isn't price — it's the "I've tried this before" objection. The landing page leads with that exact frustration in the first two lines, then immediately reframes it as a formula problem, not a personal one. That shift moves the reader from resigned to curious.</p>
+    <p>The email sequence mirrors a coaching relationship, not a sales funnel. Each email gives the buyer something useful at exactly the moment they need it: expectations before they start, troubleshooting at the halfway point, and a data-backed reorder nudge at the end. The goal is zero churn, not just one sale.</p>
+    <p>Framework: PAS on the landing page (Problem/Agitation/Solution), transitioning to retention-led nurture in the email sequence.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CASE STUDY 3: DRAPE
+════════════════════════════════════════ -->
+<section class="case-study" id="drape">
+  <div class="cs-header">
+    <span class="cs-tag">Fashion · Apparel</span>
+    <h2 class="cs-title">Drape</h2>
+    <p class="cs-subtitle">Landing page + welcome sequence for a minimal wardrobe brand targeting professional women</p>
+  </div>
+
+  <div class="cs-meta-grid">
+    <div class="cs-meta-cell"><span class="label">Format</span><span class="value">Landing Page + Email</span></div>
+    <div class="cs-meta-cell"><span class="label">Emails</span><span class="value">3-part welcome sequence</span></div>
+    <div class="cs-meta-cell"><span class="label">Framework</span><span class="value">BAB + Education</span></div>
+    <div class="cs-meta-cell"><span class="label">Goal</span><span class="value">Convert browsers into intentional buyers</span></div>
+  </div>
+
+  <p class="section-label">The Brief</p>
+  <div class="brief-box">
+    <p>Drape makes investment-grade wardrobe pieces for professional women who are tired of buying a lot and wearing little. The brand's philosophy is anti-fast-fashion: limited SKUs per season, a neutral palette designed for mix-and-match, and fabric quality that outlasts trends.</p>
+    <p>The brief: write a landing page that converts women who are already interested in intentional dressing but haven't yet committed to buying, and a welcome email sequence that educates new subscribers on the Drape approach before making an offer.</p>
+  </div>
+
+  <p class="section-label">Landing Page</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">Landing Page Copy</div>
+    <div class="lp-copy">
+      <div class="lp-hero">
+        <div class="headline">Fewer clothes. Better mornings. Actually wearing everything you own.</div>
+        <div class="subheadline">Drape makes investment pieces for women who are tired of having a full wardrobe and nothing to wear.</div>
+      </div>
+      <div class="lp-body">
+        <h3>Here's what most fashion brands won't say</h3>
+        <p>You don't need more clothes. You need fewer clothes that work harder.</p>
+        <p>The reason you're standing in front of your wardrobe at 7am feeling stuck isn't because you don't have enough. It's because nothing quite goes with everything else. One good piece, but it needs the right shoes. Another that only works in one context. A drawer full of maybes.</p>
+        <p>Drape is built differently. Every piece we make is designed to work with at least five others in our range. Wear the linen trousers to a client meeting. Wear them to dinner. Wear them on a slow Saturday. The same item, three different days, zero redundancy.</p>
+
+        <h3>The Drape approach</h3>
+        <ul>
+          <li>Limited SKUs, deliberate cuts — 12 pieces per season, not 200</li>
+          <li>Neutral palette that doesn't get boring — clay, slate, bone, deep olive</li>
+          <li>Fabric that lasts, not fabric that photographs</li>
+        </ul>
+
+        <h3>What customers say</h3>
+        <div class="quote-block">"I sold 60% of my wardrobe after discovering Drape. I wear what's left every single week." <cite>— Wanjiku, marketing director</cite></div>
+        <div class="quote-block">"I used to spend 20 minutes getting dressed. Now it's five. The pieces just work." <cite>— Priya, 31</cite></div>
+      </div>
+      <div class="cta-strip">
+        <div>
+          <div class="cta-text">Shop the Q2 Collection — limited batch</div>
+          <div class="cta-sub">Free returns. Free alterations on orders over KSh 8,000.</div>
+        </div>
+        <button class="cta-btn">Shop the Collection →</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Email Sequence</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">3-Part Welcome Sequence</div>
+    <div class="email-sequence">
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">01</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 0 — Welcome</div>
+            <div class="email-subject">Subject: Welcome to Drape. Here's what we believe.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>We started Drape because we were tired of buying clothes that looked good in the cart and sat unworn in the wardrobe.</p>
+          <p>Every piece we make goes through one test before it's approved: does it earn its space?</p>
+          <p>That means it has to pair with at least five other Drape items. It has to hold its shape after 40 washes. It has to look as good in real light as it does on a model.</p>
+          <p>Most pieces don't pass. The ones that do are what you'll find in our store.</p>
+          <p>Over the next few days, we'll share how to build a functional wardrobe starting with just three pieces — and which pieces we'd suggest based on your lifestyle.</p>
+          <span class="email-cta">→ Browse the current collection</span>
+          <div class="email-sig">— The Drape Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">02</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 3 — Education</div>
+            <div class="email-subject">Subject: The 3-piece wardrobe starter (and why it works).</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>If you're new to intentional dressing, starting small sounds counterintuitive. Here's why it works:</p>
+          <p>When you have fewer pieces, you're forced to make them work together. You stop buying things in isolation. You start thinking in outfits, not items.</p>
+          <p>The three pieces we'd start with:</p>
+          <ol>
+            <li><strong>A well-cut trouser</strong> — the foundation of most professional and casual looks</li>
+            <li><strong>A relaxed, long shirt</strong> — wears tucked, untucked, open as a layer</li>
+            <li><strong>One structured piece</strong> — a blazer or coat that brings everything together</li>
+          </ol>
+          <p>From those three, you can build 9–12 distinct outfits without thinking hard. Every piece in our Q2 collection was designed with this in mind.</p>
+          <span class="email-cta">→ Build your starter wardrobe</span>
+          <div class="email-sig">— The Drape Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">03</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 7 — Social Proof + Nudge</div>
+            <div class="email-subject">Subject: "I wear everything I own now."</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>That's what Aisha told us two months after her first Drape order.</p>
+          <p>She'd been a sale-rack buyer for years — picking up things because the price was good, not because they fit her actual life. Her wardrobe was full. She wore maybe 30% of it.</p>
+          <p>She started with the Column Trousers and the Relaxed Blazer.</p>
+          <div class="quote-block">"I wore the trousers four times the first week. The blazer every other day. I started looking at my other clothes and realising nothing was actually pulling its weight." <cite>— Aisha, 33</cite></div>
+          <p>She's now on her third Drape order.</p>
+          <p>If you've been thinking about it, the Q2 collection is limited batch. We don't restock sold-out items within the season.</p>
+          <span class="email-cta">→ Shop before your size goes</span>
+          <div class="email-sig">— The Drape Team</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="strategy-note">
+    <div class="sn-label">Copywriter's Note</div>
+    <h4>Selling restraint in an industry built on excess.</h4>
+    <p>The tension here is interesting: the brand's philosophy is "buy less," but the goal is to make a sale. The landing page resolves this by making the reader feel seen in her frustration before presenting Drape as a different kind of solution — not another thing to buy, but a system to replace the cycle she's stuck in.</p>
+    <p>The email sequence delays the sales pitch until Email 3 deliberately. By then, she's been given a concrete framework (the 3-piece starter) that makes the purchase feel like an intelligent decision, not an impulse. Email 3 uses a customer story rather than product copy, which works better for a skeptical, research-led buyer.</p>
+    <p>Framework: BAB (Before/After/Bridge) across the full sequence, with scarcity used honestly in Email 3 — limited batch is factual, not manufactured urgency.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     CASE STUDY 4: FLOWDESK
+════════════════════════════════════════ -->
+<section class="case-study" id="flowdesk">
+  <div class="cs-header">
+    <span class="cs-tag">SaaS · Email Marketing</span>
+    <h2 class="cs-title">Flowdesk</h2>
+    <p class="cs-subtitle">Landing page + onboarding email sequence for an email marketing tool built for solo creators</p>
+  </div>
+
+  <div class="cs-meta-grid">
+    <div class="cs-meta-cell"><span class="label">Format</span><span class="value">Landing Page + Email</span></div>
+    <div class="cs-meta-cell"><span class="label">Emails</span><span class="value">3-part onboarding sequence</span></div>
+    <div class="cs-meta-cell"><span class="label">Framework</span><span class="value">AIDA + Activation</span></div>
+    <div class="cs-meta-cell"><span class="label">Goal</span><span class="value">Trial signup → paid conversion</span></div>
+  </div>
+
+  <p class="section-label">The Brief</p>
+  <div class="brief-box">
+    <p>Flowdesk is an email marketing tool built for solo creators, coaches, and small teams who find tools like Mailchimp overwhelming. The product's edge is simplicity: fewer features than enterprise tools, but the right features, in the right order, without a learning curve that eats your afternoon.</p>
+    <p>The brief: write a landing page that converts people who are frustrated with their current email tool, and an onboarding email sequence designed to activate trial users within the first 14 days — moving them from signed-up to actually-using-it before the trial ends.</p>
+  </div>
+
+  <p class="section-label">Landing Page</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">Landing Page Copy</div>
+    <div class="lp-copy">
+      <div class="lp-hero">
+        <div class="headline">Email marketing that doesn't require a manual.</div>
+        <div class="subheadline">Flowdesk helps creators and small teams send better emails — without spending half the day figuring out how.</div>
+      </div>
+      <div class="lp-body">
+        <h3>The honest problem with most email tools</h3>
+        <p>They were built for marketing teams, not for one person running a business.</p>
+        <p>You sign up, hit the dashboard, and immediately face a learning curve nobody warned you about. Automations buried under four menus. Segmentation that takes an hour to set up. Analytics that tell you everything except the thing you actually want to know: are people buying?</p>
+        <p>Flowdesk is different. Not because it has fewer features — because it has the right ones, in the right order, without making you feel like you need a certification to use them.</p>
+
+        <h3>What you can do in your first 20 minutes</h3>
+        <ul>
+          <li>Import your list and segment it by sign-up source</li>
+          <li>Set up a 3-email welcome sequence with time delays</li>
+          <li>Connect your Stripe or Gumroad account to trigger purchase emails automatically</li>
+          <li>Send your first broadcast to a specific segment</li>
+        </ul>
+
+        <h3>What users say</h3>
+        <div class="quote-block">"I migrated from Mailchimp after two years. Flowdesk took me 40 minutes to set up. The thing that took me a week on Mailchimp took me one afternoon here." <cite>— James, online fitness coach</cite></div>
+        <div class="quote-block">"The revenue tracking alone is worth it. I can see exactly which email sequence is converting." <cite>— Nadia, course creator</cite></div>
+
+        <h3>Pricing</h3>
+        <p>Flat $19/month. No per-subscriber fees. No tier upgrades when you hit 1,000 contacts. Send to 100 people or 10,000 — same price.</p>
+      </div>
+      <div class="cta-strip">
+        <div>
+          <div class="cta-text">Start free for 14 days</div>
+          <div class="cta-sub">No credit card required. Cancel anytime.</div>
+        </div>
+        <button class="cta-btn">Start free trial →</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-label">Email Sequence</p>
+  <div class="copy-section">
+    <div class="copy-type-badge">3-Part Onboarding Sequence</div>
+    <div class="email-sequence">
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">01</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 0 — Right after signup</div>
+            <div class="email-subject">Subject: You're in. Do this first.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>You've got 14 days to decide if Flowdesk is worth keeping. Here's how to make sure you actually use them.</p>
+          <p>The one thing we want you to do today: <strong>set up your welcome sequence.</strong></p>
+          <p>It takes about 15 minutes. And it's the single highest-ROI thing in email marketing — a sequence that goes out automatically every time someone joins your list.</p>
+          <ol>
+            <li>Go to Automations → New Sequence</li>
+            <li>Choose "Welcome Series" from the templates</li>
+            <li>Edit the three emails to match your voice</li>
+            <li>Set delays (we suggest Day 0, Day 2, Day 5)</li>
+            <li>Activate</li>
+          </ol>
+          <p>From now on, every new subscriber gets a proper introduction — without you doing anything.</p>
+          <span class="email-cta">→ Set up your welcome sequence</span>
+          <p>We'll be back tomorrow with what to do next.</p>
+          <div class="email-sig">— The Flowdesk Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">02</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 2 — Feature Education</div>
+            <div class="email-subject">Subject: The one metric that actually matters.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Most email tools show you open rates.</p>
+          <p>Open rates are fine. But they don't tell you if people are buying.</p>
+          <p>Flowdesk's Revenue Attribution connects your email account to your payment platform — Stripe, Gumroad, Shopify, your choice — so you can see exactly which email led to which sale. Not estimated. Not modelled. Actual revenue, traced back to the email that drove it.</p>
+          <p>Setup takes about 4 minutes: Settings → Integrations → Connect your store.</p>
+          <p>Once it's live, you'll see a revenue number next to every broadcast and sequence. You'll know which subject lines convert, which sequences work, and where to double down.</p>
+          <span class="email-cta">→ Connect your store now</span>
+          <div class="email-sig">— The Flowdesk Team</div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-header">
+          <div class="email-num">03</div>
+          <div class="email-meta">
+            <div class="email-timing">Day 10 — Pre-trial end</div>
+            <div class="email-subject">Subject: Four days left on your trial.</div>
+          </div>
+        </div>
+        <div class="email-body">
+          <p>Your trial ends in four days.</p>
+          <p>Before you decide, here's what most people have set up by day 10: a welcome sequence running on autopilot, at least one broadcast sent to their full list, and revenue tracking connected to their store.</p>
+          <p>If you've done those three things, you already know whether Flowdesk works for you.</p>
+          <p>If you haven't had time — reply to this email and tell us where you got stuck. We'll help you get it working before the trial ends.</p>
+          <p>Upgrading is $19/month, flat. No surprises.</p>
+          <span class="email-cta">→ Keep your Flowdesk account</span>
+          <div class="email-sig">— The Flowdesk Team</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="strategy-note">
+    <div class="sn-label">Copywriter's Note</div>
+    <h4>The activation problem: signed up isn't the same as converted.</h4>
+    <p>Most SaaS churn happens during the trial, not after it. People sign up, get overwhelmed, and never come back. The onboarding sequence is designed to solve that by giving the user one clear task per email, timed to the moments when they're most likely to disengage.</p>
+    <p>Email 1 gives them a quick win — the welcome sequence setup — so they feel immediate value. Email 2 introduces the highest-differentiating feature (revenue tracking) when they're already inside the product. Email 3 removes the final conversion friction by making the upgrade feel like the natural next step, not a sales pitch.</p>
+    <p>Framework: AIDA on the landing page, activation-focused retention copy across the sequence. The trial-end email deliberately avoids countdown urgency language — the product either worked or it didn't, and the email acknowledges that honestly.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-name">Flex Munene</div>
+  <div class="footer-links">
+    <a href="mailto:flexmunene@gmail.com">Email me</a>
+    <a href="https://www.linkedin.com/in/flex-munene-6569b63a0" target="_blank">LinkedIn</a>
+    <a href="https://flexmunene-eng.github.io/Portfolio" target="_blank">Full Portfolio</a>
+  </div>
+</footer>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.case-study').forEach(el => el.classList.remove('visible'));
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('visible');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
